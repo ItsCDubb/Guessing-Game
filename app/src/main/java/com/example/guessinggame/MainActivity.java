@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    final static int CORRECT             = 0;
-    final static int LOW                 = 1;
-    final static int HIGH                = 2;
-    final static int THE_NUMBER_TO_GUESS = 4;
+    final static int CORRECT = 0;
+    final static int LOW     = 1;
+    final static int HIGH    = 2;
+    int THE_NUMBER_TO_GUESS  = 4;
 
     int guess   = 0;
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int guess = Integer.parseInt(textEntry.getText().toString());
+                guess = Integer.parseInt(textEntry.getText().toString());
 
                 int result = checkGuess(guess);
 
