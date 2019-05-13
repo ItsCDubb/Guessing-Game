@@ -9,15 +9,16 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final int THE_NUMBER_TO_GUESS = 1500;
-    static final int CORRECT = 0;
-    static final int LOW = 1;
-    static final int HIGH = 2;
-    static final int RESET = 3;
+    final static int CORRECT = 0;
+    final static int LOW     = 1;
+    final static int HIGH    = 2;
 
-    Button buttonSubmit;
-    EditText editEntry;
+    int guess   = 0;
+    TextView textQuestion;
+    EditText textEntry;
+    Button   buttonSubmit;
     TextView textResult;
+
     int guess;
 
     @Override
@@ -26,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textResult=findViewById(R.id.text_result);
-        editEntry = findViewById(R.id.text_entry);
+        textEntry = findViewById(R.id.text_entry);
         buttonSubmit = findViewById(R.id.button_submit);
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                guess = Integer.parseInt(editEntry.getText().toString());
+                guess = Integer.parseInt(textEntry.getText().toString());
 
                 int result = checkGuess(guess);
 
@@ -44,13 +45,26 @@ public class MainActivity extends AppCompatActivity {
     int checkGuess(int guess) {
         //check to see if the number is correct and return the result as an integer value
 
-        if (guess == THE_NUMBER_TO_GUESS) {
+        switch (userinput){
+            case 0:
+                return CORRECT;
+                break;
+            case 1:
+                return LOW;
+                break;
+            case 2:
+                return HIGH;
+                break;
+            default:
+        }
+
+        /*if (guess == THE_NUMBER_TO_GUESS) {
             return CORRECT;
         } else if (guess < THE_NUMBER_TO_GUESS) {
             return LOW;
         } else {
             return HIGH;
-        }
+        }*/
     }
 
     void updateUI(int result) {
